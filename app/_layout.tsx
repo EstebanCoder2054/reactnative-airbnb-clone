@@ -111,6 +111,7 @@ function RootLayoutNav() {
         name="listing/[id]" // pointing to the file called [id].tsx
         options={{
           headerTitle: "",
+          headerTransparent: true,
         }}
       />
 
