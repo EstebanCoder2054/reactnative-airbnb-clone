@@ -6,6 +6,8 @@ import Listings from '@/components/Listings'
 import ListingsMap from '@/components/ListingsMap'
 import ListingsData from '@/assets/data/airbnb-listings.json';
 import ListingsDataGeo from '@/assets/data/airbnb-listings.geo.json';
+import ListingsBottomSheet from '@/components/ListingsBottomSheet'
+import { Listing } from '@/interfaces/listing'
 
 const Page = () => {
   // It's a good practice and pattern to control the data and renders of the child components from the parent
@@ -29,6 +31,7 @@ const Page = () => {
 
       {/* <Listings listings={items} category={category}/> */}
       <ListingsMap listings={geoItems}/>
+      <ListingsBottomSheet listings={items as Listing[]} category={category}/>
     </View>
   )
 }
