@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Share,
 } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import ListingsData from "@/assets/data/airbnb-listings.json";
 import Animated, {
   SlideInDown,
@@ -29,6 +29,7 @@ const { width } = Dimensions.get("window");
 const Page = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const navigation = useNavigation();
+  const router = useRouter();
 
   const listing: Listing = (ListingsData as any[]).find(
     (item) => item.id === id
@@ -54,21 +55,21 @@ const Page = () => {
       headerBackground: () => (
         <Animated.View style={[headerAnimatedStyle, styles.header]} />
       ),
+      headerLeft: () => (
+        <TouchableOpacity style={styles.roundButton} onPress={() => router.back()}>
+          <Ionicons name="chevron-back" size={24} color={"#000"} />
+        </TouchableOpacity>
+      ),
       headerRight: () => (
         <View style={styles.bar}>
           <TouchableOpacity style={styles.roundButton} onPress={shareListing}>
             <Ionicons name="share-outline" size={22} color={"#000"} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.roundButton} onPress={shareListing}>
+          <TouchableOpacity style={styles.roundButton} onPress={() => console.log('new feature to be added')}>
             <Ionicons name="heart-outline" size={22} color={"#000"} />
           </TouchableOpacity>
         </View>
-      ),
-      headerLeft: () => (
-        <TouchableOpacity style={styles.roundButton} onPress={shareListing}>
-          <Ionicons name="chevron-back" size={24} color={"#000"} />
-        </TouchableOpacity>
       ),
     });
   }, []);
