@@ -36,7 +36,6 @@ const Login = () => {
 
     try {
       const { createdSessionId, setActive } = await selectedAuth();
-      console.log("🚀 ~ onSelectAuth ~ createdSessionId:", createdSessionId);
 
       if (createdSessionId && setActive) { // Means that the user got authenticated
         setActive({ session: createdSessionId }); // This method is to tell the entire SDK (Clerk Provider) that the user is now authenticated

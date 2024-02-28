@@ -52,7 +52,7 @@ const Listings = ({ listings: items, category }: Props) => {
   );
 
   return (
-    <View style={defaultStyles.container}>
+    <View style={[defaultStyles.container, { marginTop: 95 }]}>
       <FlatList
         data={loading ? [] : items}
         ref={listRef}
